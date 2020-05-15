@@ -6,6 +6,8 @@ const express = require('express');
 
 const port = normalizePort(process.env.PORT || '5000');
 
+const indexRouter = require('./routes/index');
+
 const app = express();
 
 app.set('port',port);
@@ -15,7 +17,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //app.use(express.static(path.join(__dirname, 'public')));
-app.get('/',(req, res) => res.render('demo'));
+
+app.use('/', indexRouter);
 app.listen(port, () => console.log(`Listening on ${ port }`));
 
 //http.createServer(function (req, res) {
