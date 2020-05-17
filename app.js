@@ -1,4 +1,4 @@
-//importing modules
+// importing modules
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -7,15 +7,15 @@ var bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 
-//Setting port
+// Setting port
 const port = normalizePort(process.env.PORT || '5000');
 
-//setting express app
+// setting express app
 const app = express();
 
 app.set('port',port);
 
-//view engine setup
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
