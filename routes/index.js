@@ -1,5 +1,4 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var router = express.Router();
 
 /* GET home page. */
@@ -8,11 +7,11 @@ router.get('/', function(req, res, next) {
   console.log("testing");
 });
 
-router.post('/test',bodyParser.text(), function(req, res, next) {
+router.post('/test', function(req, res, next) {
   console.log(req.body);
 });
 
-router.post('/error',bodyParser.text(), function(req, res, next) {
+router.post('/error', function(req, res, next) {
   console.log(req.body);
 });
 
