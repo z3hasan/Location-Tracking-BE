@@ -22,33 +22,33 @@ function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(sendPosition, errhandler, options);
   } else {
-    var json1 = {
+    var json = {
       error: 0
     };
-    //POSTrequest(json1, "/error");
+    POSTrequest(json, "/error");
   }
 }
 
 function errhandler(err){
-  var json2 = {
+  var json = {
     error: err.code
   };
-  //POSTrequest(json2, "/error");
+  POSTrequest(json, "/error");
 }
 
 function sendPosition(position) {
-//latitude: position.coords.latitude,
-  var json3 = {
-    "test": "test"
+  var json = {
+    "longitude": position.coords.longitude,
+    "latitude": position.coords.latitude
   };
-  POSTrequest(json3, "/test");
+  POSTrequest(json, "/test");
 }
 
 function POSTrequest(body, url){
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", url, true);
   xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send(body);
+  xhttp.send(JSON.stringify(body));
 }
 
 </script>

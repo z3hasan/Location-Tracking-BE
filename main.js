@@ -26,6 +26,10 @@ app.use(bodyParser.json());
 //app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+/*
+app.use(function(error, req, res, next){
+  console.log(error.status + error.message)
+});*/
 
 app.listen(port, () => console.log(`Listening on ${ port }`));
 
