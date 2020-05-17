@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/test', function(req, res, next) {
-  console.log((req.body));
+  console.log((req.body.test));
 });
 
 router.post('/error', function(req, res, next) {
