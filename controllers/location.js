@@ -1,4 +1,4 @@
-var mailService = require('./mailer');
+var mailService = require('../helpers/mailer');
 
 // coordinates for my location
 var mycoords = {
@@ -7,17 +7,20 @@ var mycoords = {
 };
 
 var coords = function(req, res, next) {
+  console.log("Running /location POST function...Preparing email");
   mailService.mailer(distance(distance_calc(mycoords,{
     latitude: req.body.longitude,
     longitude: req.body.latitude
-  }),"");
+  }),""));
 };
 
 var error = function(req, res, next) {
+  console.log("Running /location/error POST function...Preparing email");
   mailService.mailer("Error in getting location", error_message(req.body.error));
 };
 
 function distance_calc(myLocation, theirLocation){
+  console.log("Calculating distance from your location")
   x = myLocation.latitude - theirLocation.latitude;
   y = myLocation.longitude - theirLocation.longitude;
 
@@ -25,7 +28,11 @@ function distance_calc(myLocation, theirLocation){
 }
 
 function distance(diff){
-  if (diff > 1) {
+  if (isNaN(diff))
+  {
+    return "Distanace is NaN";
+  }
+  else if (diff > 1) {
     return "At least 60 minutes away";
   }
   else if (diff > .70){
@@ -56,6 +63,7 @@ function error_message(error_code){
     default:
       message = "An unknown error occurred when running geolocation api";
   }
+  console.log(message);
   return message;
 }
 
