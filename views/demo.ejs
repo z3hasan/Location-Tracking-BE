@@ -1,31 +1,56 @@
-
 <!DOCTYPE html>
 <html>
 <body>
 
-<p>Click the button to get your coordinates.</p>
+<h1>The XMLHttpRequest Object</h1>
 
-<!--<button onclick="getLocation()">Try It</button>-->
+<button type="button" onclick="loadDoc()">Request data</button>
 
 <p id="demo"></p>
 
 <script>
-var x = document.getElementById("demo");
 
-window.setInterval(getLocation, 5000);
+function loadDoc() {}
+
+options = {
+  maximumAge: Infinity
+};
+
+getLocation();
 
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(sendPosition, errhandler, options);
   } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
+    var json = {
+      error: 0
+    };
+    POSTrequest(0, "/error");
   }
 }
 
-function showPosition(position) {
-  x.innerHTML += "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
+function errhandler(err){
+  var json = {
+    error: err.code
+  };
+  POSTrequest(err.code, "/error");
 }
+
+function sendPosition(position) {
+  var json = {
+    latitude: position.coords.latitude,
+    longitude: position.coords.longitude
+  };
+  POSTrequest("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude, "/test");
+}
+
+function POSTrequest(body, url){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "text/plain");
+  xhttp.send(body);
+}
+
 </script>
 
 </body>
