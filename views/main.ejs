@@ -33,7 +33,7 @@ function errhandler(err){
   var json = {
     error: err.code
   };
-  POSTrequest(json, "/error");
+  POSTrequest(json, "/location/error");
 }
 
 function sendPosition(position) {
