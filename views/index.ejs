@@ -41,7 +41,7 @@ function sendPosition(position) {
     "longitude": position.coords.longitude,
     "latitude": position.coords.latitude
   };
-  POSTrequest(json, "/test");
+  POSTrequest(json, "/location");
 }
 
 function POSTrequest(body, url){

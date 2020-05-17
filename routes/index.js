@@ -3,10 +3,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('demo');
+  res.render('index');
 });
 
-router.post('/test', function(req, res, next) {
+router.post('/location', function(req, res, next) {
   console.log(req.body.longitude);
   console.log(req.body.latitude);
 });
