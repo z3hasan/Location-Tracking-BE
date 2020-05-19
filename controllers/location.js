@@ -8,11 +8,11 @@ var mycoords = {
 
 var coords = function(req, res, next) {
   console.log("Running /location POST function...Preparing email");
-
+/*
   mailService.mailer(distance(distance_calc(mycoords,{
     latitude: req.body.longitude,
     longitude: req.body.latitude
-  }),""));
+  }),""));*/
 };
 
 var error = function(req, res, next) {
