@@ -8,6 +8,7 @@ var mycoords = {
 
 var coords = function(req, res, next) {
   console.log("Running /location POST function...Preparing email");
+  res.send('OK');
 /*
   mailService.mailer(distance(distance_calc(mycoords,{
     latitude: req.body.longitude,
