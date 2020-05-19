@@ -2,10 +2,14 @@
 <html>
 <body>
 
+<p id="demo"></p>
+
 <script>
 options = {
   maximumAge: Infinity
 };
+
+setInterval(getLocation, 1000*60*60);
 
 getLocation();
 
