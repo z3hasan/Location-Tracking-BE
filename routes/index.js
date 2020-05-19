@@ -4,7 +4,10 @@ var location = require('../controllers/location');
 
 // GET home page.
 router.get('/', function(req, res, next) {
-  res.render('main');
+  res.render('main', function (err, html) {
+    res.type('html');
+    res.send(html);
+  });
 });
 
 router.post('/location', location.coords);
