@@ -6,34 +6,29 @@
 
 <script>
 options = {
-  maximumAge: Infinity
+  enableHighAccuracy: false,
+  maximumAge: Infinity,
+  timeout : Infinity
 };
 
-//setInterval(getLocation, 1000*60*60);
+setInterval(getLocation, 1000*60*60);
 
 const starting = new Promise(resolve => {
     resolve = setTimeout(getLocation, 2000);
   })
   .then((res) => {clearTimeout(res);});
 
-
-//var timer = setTimeout(getLocation,2000);
-
-
 function getLocation() {
-    document.getElementById("demo").innerHTML += "getlocation";
-
 
   // if (!"geolocation" in navigator)
-  /*if (navigator.geolocation) {
-
+  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(sendPosition, errhandler, options);
   } else {
     var json = {
       error: 0
     };
     POSTrequest(json, "/error");
-  }*/
+  }
 }
 
 function errhandler(err){
@@ -52,7 +47,10 @@ function sendPosition(position) {
 }
 
 function POSTrequest(body, url){
-  document.getElementById("demo").innerHTML += JSON.parse(body);
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send(JSON.stringify(body));
 }
 
 </script>
