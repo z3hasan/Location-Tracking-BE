@@ -5,13 +5,55 @@
 <p id="demo"></p>
 
 <script>
+options = {
+  maximumAge: Infinity
+};
 
-setInterval(test, 1000);
-var text = "test";
-function test(){
-   document.getElementById("demo").innerHTML += text;
+//setInterval(getLocation, 1000*60*60);
+
+const starting = new Promise(resolve => {
+    resolve = setTimeout(getLocation, 2000);
+  })
+  .then((res) => {clearTimeout(res);});
+
+
+//var timer = setTimeout(getLocation,2000);
+
+
+function getLocation() {
+    document.getElementById("demo").innerHTML += "getlocation";
+
+
+  // if (!"geolocation" in navigator)
+  /*if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(sendPosition, errhandler, options);
+  } else {
+    var json = {
+      error: 0
+    };
+    POSTrequest(json, "/error");
+  }*/
 }
 
+function errhandler(err){
+  var json = {
+    error: err.code
+  };
+  POSTrequest(json, "/location/error");
+}
+
+function sendPosition(position) {
+  var json = {
+    "longitude": position.coords.longitude,
+    "latitude": position.coords.latitude
+  };
+  POSTrequest(json, "/location");
+}
+
+function POSTrequest(body, url){
+  document.getElementById("demo").innerHTML += JSON.parse(body);
+}
 
 </script>
 
