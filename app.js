@@ -38,6 +38,7 @@ app.use('/', indexRouter);
 
 app.use(function(error, req, res, next){
   console.log(error.status + ":" + error.message);
+  return res.sendStatus(error.status);
   //res.status(error.status || 500).send(error.message);
 });
 
