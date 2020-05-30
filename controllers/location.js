@@ -60,7 +60,13 @@ function error_message(error_code){
       message = "Position Unavailable:	The acquisition of the geolocation failed because at least one internal source of position returned an internal error.";
       break;
     case 3:
-      message = "Timeout:	The time allowed to acquire the geolocation was reached before the information was obtained."
+      message = "Timeout:	The time allowed to acquire the geolocation was reached before the information was obtained.";
+      break;
+    case 4:
+      message = "Android device: Location was turned off or device never recorded its location";
+      break;
+    case 5:
+      message = "Permission denied from Android Device";
       break;
     default:
       message = "An unknown error occurred when running geolocation api";
