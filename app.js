@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next){
 
-  //res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   if (req.header === 'OPTIONS'){
     console.log("it was an option?");
@@ -38,8 +38,7 @@ app.use('/', indexRouter);
 
 app.use(function(error, req, res, next){
   console.log(error.status + ":" + error.message);
-  return res.sendStatus(error.status);
-  //res.status(error.status || 500).send(error.message);
+  //res.status(error.status || 500).send(error.message); <- send an HTTP response
 });
 
 app.listen(port, () => console.log(`Listening on ${ port }`));
