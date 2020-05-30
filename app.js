@@ -19,23 +19,26 @@ app.set('port',port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 //app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
+/*
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   if (req.header === 'OPTIONS'){
+    console.log("it was an option?");
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     return res.sendStatus(200);
-  }
+  }*/
+  next();
 });
 
 app.use('/', indexRouter);
 
 app.use(function(error, req, res, next){
-  console.log(error.status + ":" + error.message)
+  console.log(error.status + ":" + error.message);
+  //res.status(error.status || 500).send(error.message);
 });
 
 app.listen(port, () => console.log(`Listening on ${ port }`));
