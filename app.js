@@ -34,6 +34,11 @@ app.use(function(req, res, next){
   next();
 });
 
+app.use(function(req,res, next){
+  console.log(req.is('application/json'));
+  next();
+});
+
 app.use('/', indexRouter);
 
 app.use(function(error, req, res, next){
