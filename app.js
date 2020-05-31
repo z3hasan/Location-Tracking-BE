@@ -35,6 +35,7 @@ app.use(function(req, res, next){
 });
 
 app.use(function(req,res, next){
+  console.log(req.is('application/json'));
   if(req.is('application/json') == 'application/json' || req.is('application/json') == null){
       next();
   }
