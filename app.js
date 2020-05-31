@@ -40,7 +40,7 @@ app.use(function(req,res, next){
       next();
   }
   else {
-    res.sendStatus(412);
+    res.sendStatus(400);
   }
 });
 

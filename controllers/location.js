@@ -17,9 +17,16 @@ var coords = function(req, res, next) {
 
 var error = function(req, res, next) {
   console.log("Running /location/error POST function...Preparing email");
-  res.sendStatus(200);
-  console.log(req.body.error);
-//  mailService.mailer("Error in getting location", error_message(req.body.error));
+
+  if (req.body.error != undefined){
+    res.sendStatus(200);
+    console.log("Error Code:" + req.body.error);
+      //  mailService.mailer("Error in getting location", error_message(req.body.error));
+  }
+  else{
+    res.sendStatus(400);
+  }
+
 };
 
 function distance_calc(myLocation, theirLocation){
