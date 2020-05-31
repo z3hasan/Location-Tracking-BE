@@ -17,7 +17,9 @@ var coords = function(req, res, next) {
 
 var error = function(req, res, next) {
   console.log("Running /location/error POST function...Preparing email");
+  console.
   res.sendStatus(200);
+  console.log(req.body.error);
 //  mailService.mailer("Error in getting location", error_message(req.body.error));
 };
 

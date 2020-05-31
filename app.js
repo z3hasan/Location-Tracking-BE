@@ -22,18 +22,18 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 //app.use(express.static(path.join(__dirname, 'public')));
 
+//CORS//
 app.use(function(req, res, next){
-
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Origin');
   if (req.method === 'OPTIONS'){
-    console.log("it was an option?");
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     return res.sendStatus(200);
   }
   next();
 });
 
+//fail
 app.use(function(req,res, next){
   console.log(req.is('application/json'));
   if(req.is('application/json') == 'application/json' || req.is('application/json') == null){
