@@ -3,3 +3,6 @@ node_modules
 
 # Local development
 *.env
+
+/views/test.html
+/helpers/mailer-config.js

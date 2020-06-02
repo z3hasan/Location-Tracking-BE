@@ -11,10 +11,10 @@ var coords = function(req, res, next) {
   if (req.body.longitude != undefined && req.body.latitude != undefined){
     console.log("Running /location POST function...Preparing email");
     res.sendStatus(200);
-    /*mailService.mailer(distance(distance_calc(mycoords,{
+    mailService.mailer(distance(distance_calc(mycoords,{
       latitude: req.body.longitude,
       longitude: req.body.latitude
-    }),""));*/
+    }),""));
   } else{
     res.sendStatus(400);
   }
@@ -26,7 +26,7 @@ var error = function(req, res, next) {
     console.log("Running /location/error POST function...Preparing email");
     res.sendStatus(200);
     console.log("Error Code:" + req.body.error);
-    //  mailService.mailer("Error in getting location", error_message(req.body.error));
+      mailService.mailer("Error in getting location", error_message(req.body.error));
   } else{
     res.sendStatus(400);
   }

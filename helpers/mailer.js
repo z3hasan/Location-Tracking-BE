@@ -1,15 +1,16 @@
 var nodemailer = require('nodemailer');
+var config = require('./mailer-config');
 
-var sender = 'z3hasan@outlook.com';
+var sender = config.email;
 
 var mailer = function(subject, text){
 
   console.log("Sending email");
   var smpt = {
-    service: 'outlook',
+    service: config.service,
     auth: {
       user: sender,
-      pass: 'dy72Cn3a'
+      pass: config.password
     }
   };
 
